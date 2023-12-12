@@ -108,6 +108,8 @@ class SyncBasesTablesController extends AbstractController
      */    
     public function delete(Request $request,SyncBasesTables $item, EntityManagerInterface $entityManager): Response
     {
+        
+        $IdReditect = $item->getIdSyncbase()->getId();
         $form = $this->createForm(SyncBasesTablesType::class, $item);
         $form->handleRequest($request);
 
@@ -115,7 +117,7 @@ class SyncBasesTablesController extends AbstractController
             $entityManager->remove($item);
             $entityManager->flush();
             $request->getSession()->getFlashBag()->add('message', 'Se ha borrado registro ');
-            return $this->redirectToRoute('syncbasestables_index');
+            return $this->redirectToRoute('syncbases_edit', ['id'=>$IdReditect]);
         }
         return $this->renderForm('syncbasestables/form.html.twig', [
             'titleform'=>'Borrar registro a sincronizar',
