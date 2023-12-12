@@ -1,0 +1,48 @@
+<?php //App%255CEntity%255CSysTypetype%2524object
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
+        clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
+        clone ($p['Doctrine\\ORM\\Mapping\\SequenceGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\SequenceGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'object',
+            ],
+            'type' => [
+                'string',
+            ],
+            'length' => [
+                6,
+            ],
+            'precision' => [
+                null,
+            ],
+            'scale' => [
+                null,
+            ],
+            'options' => [
+                [
+                    'comment' => 'Tipo del objeto',
+                ],
+            ],
+            'strategy' => [
+                2 => 'SEQUENCE',
+            ],
+            'sequenceName' => [
+                3 => 'sys_typetype_object_seq',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+        $o[3],
+    ],
+    []
+); }];

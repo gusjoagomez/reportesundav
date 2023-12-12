@@ -1,0 +1,52 @@
+<?php //App%255CEntity%255CMedPatient
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone ($p['Doctrine\\ORM\\Mapping\\UniqueConstraint'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\UniqueConstraint')),
+        clone $p['Doctrine\\ORM\\Mapping\\UniqueConstraint'],
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'med_patient',
+                'IDX_CD369CB0979B1AD6',
+                'med_patient_un2',
+                'med_patient_un',
+            ],
+            'indexes' => [
+                [
+                    $o[1],
+                ],
+            ],
+            'uniqueConstraints' => [
+                [
+                    $o[2],
+                    $o[3],
+                ],
+            ],
+            'columns' => [
+                1 => [
+                    'company_id',
+                ],
+                [
+                    'company_id',
+                    'email',
+                ],
+                [
+                    'company_id',
+                    'documenttype_id',
+                    'documentnumber',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[4],
+    ],
+    []
+); }];

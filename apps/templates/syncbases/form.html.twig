@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Formulario de SyncBases ' | trans }} {% endblock %}
+
+{% block body %}
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message | trans }}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message | trans }}</div>
+{% endfor %}
+<br>
+<a class="btn btn-secondary" role="button" aria-disabled="true" href="{{url('syncbases_index')}}">{{ 'Volver' | trans}}</a>
+
+<h1>{{ titleform | trans }}</h1>
+
+{{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="col-md-6 mx-auto">
+        <div class="row">
+            {{ form_row(form.description) }}
+            <div class="col" id="fhost">
+                {{ form_row(form.fhost) }}
+                {{ form_row(form.fport) }}
+                {{ form_row(form.fuser) }}
+                {{ form_row(form.fpasswd) }}
+            </div>
+            <div class="col" id="thost">
+                {{ form_row(form.thost) }}
+                {{ form_row(form.tport) }}
+                {{ form_row(form.tuser) }}
+                {{ form_row(form.tpasswd) }}
+            </div>
+            {{ form_row(form.active) }}
+        </div>
+        {{ form_row(form.btnsubmit) }}
+    </div>
+
+{{ form_end(form) }}
+
+{% if borrado is defined %}<div class="alert alert-danger" role="alert">{{ 'ATENCIÓN: Usted está por eleminar este registro.' | trans }}</div>{% endif %}
+
+{% if regsync is defined %}
+    <hr>
+    <div class="col-md-6 mx-auto">
+    <h2>Tablas a sincronizar</h2>
+    <a class="btn btn-primary" role="button" aria-disabled="true" href="{{url('syncbasestables_new', {'id':regsync.id})}}">{{ 'Nuevo tabla' | trans }}</a>
+    <table id="tblist" class="table table-sm table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+    <th data-field="fbase">{{ 'Base fuente' | trans}}</th>
+    <th data-field="fschema">{{ 'Esquema fuente' | trans}}</th>
+    <th data-field="ftable">{{ 'Tabla fuente' | trans}}</th>
+    <th data-field="tbase">{{ 'Base destino' | trans}}</th>
+    <th data-field="tschema">{{ 'Esquema destino' | trans}}</th>
+    <th data-field="ttable">{{ 'Tabla destino' | trans}}</th>
+    <th data-field="active">{{ 'Activa' | trans}}</th>
+    <th data-field="opcionSyncBasesTables">{{'Opcion' | trans}}</th>
+    </tr>
+    </thead>
+    </table>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+    $('#tblist').DataTable({
+        "stateSave":true,"processing":true,
+        "language":{"url":"{{asset('/assets/datatables/Spanish.json')}}"},
+        "ajax":"{{url('syncbasestables_list', {'id':regsync.id} )}}",
+        "order": [[ 0, "desc" ]],
+        "columns":[
+        {"data":"fbase",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/syncbasestables/"+oData.id+"/edit'>"+oData.fbase+"</a>");}}},
+        {"data":"fschema",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/syncbasestables/"+oData.id+"/edit'>"+oData.fschema+"</a>");}}},
+        {"data":"ftable",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/syncbasestables/"+oData.id+"/edit'>"+oData.ftable+"</a>");}}},
+        {"data":"tbase"},
+        {"data":"tschema"},
+        {"data":"ttable"},
+        {"data":"active"},
+        {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/syncbasestables/"+oData.id+"/delete'><i class='bi bi-trash'></i></a>");}}},
+        ]
+    });   
+    });
+    </script>
+
+        <hr>
+        <div class="col-md-6 mx-auto">
+        {% if regsync.active  %}
+            <a class="btn btn-warning" role="button" aria-disabled="true" href="{{url('syncbases_genfile', {'id':regsync.id})}}">{{ 'Generar archivo de configuracion de sincronizacion' | trans }}</a>
+        {% else  %}
+            <strong><h5>****** Esta tarea no está activa ******</h5></strong>
+        {% endif  %}
+
+          {% if archivoGenerado !=''  %}
+          <br><strong><h5>Archivo Generado:  {{archivoGenerado}}</h5></strong>
+          {% endif  %}
+
+        </div>
+
+    <hr>
+{% endif %}
+
+<br><br><br>
+
+{% endblock %}

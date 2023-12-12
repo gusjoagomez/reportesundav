@@ -1,0 +1,3 @@
+<?php //App%255CController%255CDatagrid%2523grid_pager
+
+return [PHP_INT_MAX, []];

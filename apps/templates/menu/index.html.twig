@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MENU:</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+      {% if items[0] is defined %}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% for id_n0, props_n0 in items[0] %}
+            <li class="nav-item dropdown" id="menu_{{id_n0}}">
+                
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if props_n0['icon']!='' %}<span class="{{props_n0.icon}}"></span>{% endif %}
+                    {{ props_n0.nombre }}
+                </a>
+                <ul class="dropdown-menu">
+                    {% if items[props_n0['id']] is defined %}
+                    {% for id_n1, props_n1 in items[props_n0['id']] %}
+                        {% if props_n1['activo'] is defined  and props_n1['activo'] %}
+                        {% if props_n1['divider'] == 1 %}  
+                            <li><hr class="dropdown-divider"></li>
+                        {% endif%}
+                        <li>
+                            {% set link = "#" %}
+                            {% if props_n1.link is defined and props_n1.link!= "" %}                                    
+                              {% set link = props_n1.link %}
+                            {% endif %}
+
+                            <a href="{{ app.request.baseUrl ~ '/' ~ link }}" class="dropdown-item" >
+                                {% if props_n1['icon']!='' %}<span class="{{props_n1.icon}}"></span>{% endif %} {{props_n1.nombre}}
+                            </a>
+
+                        </li>
+                        {% if props_n1['divider'] == 2 %}
+                            <li><hr class="dropdown-divider"></li>
+                        {% endif%}
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </ul>              
+            </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      
+        <ul class="nav justify-content-end">
+        <li class="nav-item dropdown justify-content-end">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user.username}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="{{url('user_chpass')}}"> Cambio Passsword</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{url('app_logout')}}"> Desconectarse</a></li>
+          </ul>
+        </li>
+        </ul>
+
+    </div>
+  </div>
+</nav>

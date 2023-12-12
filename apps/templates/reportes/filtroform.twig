@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+form_placesperson{ height:400px; width:400px;}
+</style>
+
+{% for message in app.session.getFlashBag.get('message') %}
+<br><div class="alert alert-danger">{{ message |trans}}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+<br><div class="alert alert-danger">{{ messageerr |trans}}</div>
+{% endfor %}
+
+
+
+    <div style="width: 70%" style="border: 1px solid black;">
+    <a href="{{app.request.baseUrl}}/reportes" class="btn-default btn-sm" style="background-color: #ddd;">VOLVER A LISTADO DE REPORTES</a>
+    <hr>
+        <h3>{{entity.name}}</h3>
+        <div class="panel panel-info" style="width: 80%">
+          <div class="panel-heading">{{ entity.description }}</div>
+          <hr>
+          <div class="panel-body">
+            <form action="#"  class="form-horizontal" role="form" method="post">
+              {{ form_widget( form ) }}
+              <input style="float: right;" type="submit" name="submit" class="btn btn-info" value="Generar Reporte" />
+              <br clear="all">
+              <br clear="all">
+            </form>
+          </div>
+        </div>
+
+        {% if filename is defined  %}
+        <HR>
+
+        <H4>REPORTE GENERADO.</H4>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col"><strong>{{ mensaje }}</strong>
+            </div>
+            <div class="col">
+              <a href="{{app.request.getSchemeAndHttpHost}}/rep/{{filename}}" class="btn btn-success btn-sm"><i class="bi bi-cloud-download-fill"></i> Descargar reporte</a>
+            </div>
+            <div class="col">
+              <a href="{{app.request.baseUrl}}/reportes/{{detalleid}}/detalle" class="btn btn-success btn-sm"><i class="bi bi-grid-3x3"></i> Ver por pantalla</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <HR>
+    <a href="{{app.request.baseUrl}}/reportes" class="btn-default btn-sm" style="background-color: #ddd;">VOLVER A LISTADO DE REPORTES</a>  
+    </div>
+
+
+
+
+<link href="/assets/ui/jquery-ui.css" rel="stylesheet">
+<script src="/assets/ui/jquery-ui.js"></script>
+<script src="/assets/ui/jquery.ui.datepicker-es.js"></script>
+<script type="text/javascript">
+{{js|raw}}
+</script> 
+
+{% endblock %}

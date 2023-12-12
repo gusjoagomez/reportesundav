@@ -1,0 +1,73 @@
+<?php //App%255CEntity%255CSecUser
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone ($p['Doctrine\\ORM\\Mapping\\UniqueConstraint'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\UniqueConstraint')),
+        clone $p['Doctrine\\ORM\\Mapping\\UniqueConstraint'],
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'sec_user',
+                'sec_user_fk_user_user2',
+                'sec_user_fk_user_user1',
+                'sec_user_fk_user_language1',
+                'sec_user_fk_sec_user_sec_role1',
+                'IDX_68706E3979B1AD6',
+                'sec_user_username_UNIQUE',
+                'sec_user_email_UNIQUE',
+            ],
+            'indexes' => [
+                [
+                    $o[1],
+                    $o[2],
+                    $o[3],
+                    $o[4],
+                    $o[5],
+                ],
+            ],
+            'uniqueConstraints' => [
+                [
+                    $o[6],
+                    $o[7],
+                ],
+            ],
+            'columns' => [
+                1 => [
+                    'updated_by',
+                ],
+                [
+                    'created_by',
+                ],
+                [
+                    'language_id',
+                ],
+                [
+                    'role_id',
+                ],
+                [
+                    'company_id',
+                ],
+                [
+                    'username',
+                ],
+                [
+                    'email',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[8],
+    ],
+    []
+); }];

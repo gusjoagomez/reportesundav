@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for message in app.session.getFlashBag.get('message') %}
+<br><div class="alert alert-danger">{{ message |trans}}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+<br><div class="alert alert-danger">{{ messageerr |trans}}</div>
+{% endfor %}
+
+
+<a href="{{app.request.baseUrl}}/reportes" class="btn-default btn-sm" style="background-color: #ddd;">VOLVER A LISTADO DE REPORTES</a>
+
+<h3>{{entity.name}}</h3>
+<div class="panel panel-info" style="width: 80%">
+  <div class="panel-heading">{{ reporte.name }}</div>
+  <div class="panel-body">
+      {{ reporte.description }}
+  </div>
+</div>
+<br>
+<a style="float: right"  href="{{app.request.getSchemeAndHttpHost}}/rep/{{detalle.filename}}" class="btn btn-warning btn-sm"><i class="bi bi-cloud-download-fill"></i> Descargar reporte</a>
+<br>
+{{grilla(grilla) | raw }}
+
+<br clear="both">
+<a href="{{app.request.baseUrl}}/reportes" class="btn-default btn-sm" style="background-color: #ddd;">VOLVER A LISTADO DE REPORTES</a>  
+
+{% endblock %}

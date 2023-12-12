@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CSyncBasesTables%2523setTschema
+
+return [PHP_INT_MAX, []];

@@ -1,0 +1,3 @@
+<?php //App%255CController%255CDatagrid%2523getCountSQL
+
+return [PHP_INT_MAX, []];

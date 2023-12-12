@@ -1,0 +1,40 @@
+<?php //App%255CEntity%255CMedPatient%2524id
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
+        clone ($p['Doctrine\\ORM\\Mapping\\CustomIdGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\CustomIdGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'type' => [
+                1 => 'uuid',
+            ],
+            'precision' => [
+                1 => null,
+            ],
+            'scale' => [
+                1 => null,
+            ],
+            'unique' => [
+                1 => true,
+            ],
+            'strategy' => [
+                2 => 'CUSTOM',
+            ],
+            'class' => [
+                3 => 'doctrine.uuid_generator',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+        $o[3],
+    ],
+    []
+); }];

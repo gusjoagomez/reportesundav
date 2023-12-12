@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ 'Listado de SecAudit' | trans }}{% endblock %}
+
+{% block body %}
+<h1>{{ 'Lista de SecAudit' | trans }}</h1>
+
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message| trans}}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message | trans }}</div>
+{% endfor %}
+
+
+<a class="btn btn-primary" role="button" aria-disabled="true" href="{{url('secaudit_new')}}">{{ 'Nuevo SecAudit' | trans }}</a>
+<table id="tblist" class="table table-sm table-striped table-bordered table-hover">
+<thead>
+<tr>
+ <th data-field="id">{{ 'Id' | trans}}</th>
+ <th data-field="objecttype">{{ 'Objecttype' | trans}}</th>
+ <th data-field="description">{{ 'Description' | trans}}</th>
+ <th data-field="eventdate">{{ 'Eventdate' | trans}}</th>
+ <th data-field="companyId">{{ 'Company_id' | trans}}</th>
+ <th data-field="userId">{{ 'User_id' | trans}}</th>
+ <th data-field="code">{{ 'Code' | trans}}</th>
+ <th data-field="objectid">{{ 'Objectid' | trans}}</th>
+ <th data-field="crud">{{ 'Crud' | trans}}</th>
+ <th data-field="opcionSecAudit">{{'Opcion' | trans}}</th>
+</tr>
+</thead>
+</table>
+
+<script>
+$(document).ready(function() {
+  $('#tblist').DataTable({
+    "stateSave":true,"processing":true,
+    "language":{"url":"{{asset('/assets/datatables/Spanish.json')}}"},
+    "ajax":"{{url('secaudit_list')}}",
+    "order": [[ 0, "desc" ]],
+    "columns":[
+      {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/secaudit/"+oData.id+"/edit'>"+oData.id+"</a>");}}},
+      {"data":"objecttype"},
+      {"data":"description"},
+      {"data":"eventdate"},
+      {"data":"companyId"},
+      {"data":"userId"},
+      {"data":"code"},
+      {"data":"objectid"},
+      {"data":"crud"},
+      {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/secaudit/"+oData.id+"/delete'><i class='bi bi-trash'></i></a>");}}},
+    ]
+   });   
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ 'Listado de SysType' | trans }}{% endblock %}
+
+{% block body %}
+<h1>{{ 'Lista de SysType' | trans }}</h1>
+
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message| trans}}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message | trans }}</div>
+{% endfor %}
+
+
+<a class="btn btn-primary" role="button" aria-disabled="true" href="{{url('systype_new')}}">{{ 'Nuevo SysType' | trans }}</a>
+<table id="tblist" class="table table-sm table-striped table-bordered table-hover">
+<thead>
+<tr>
+ <th data-field="id">{{ 'Id' | trans}}</th>
+ <th data-field="parentId">{{ 'Parent_id' | trans}}</th>
+ <th data-field="type">{{ 'Type' | trans}}</th>
+ <th data-field="name">{{ 'Name' | trans}}</th>
+ <th data-field="orderlist">{{ 'Orderlist' | trans}}</th>
+ <th data-field="active">{{ 'Active' | trans}}</th>
+ <th data-field="codetree">{{ 'Codetree' | trans}}</th>
+ <th data-field="nametree">{{ 'Nametree' | trans}}</th>
+ <th data-field="leveltree">{{ 'Leveltree' | trans}}</th>
+ <th data-field="property">{{ 'Property' | trans}}</th>
+ <th data-field="opcionSysType">{{'Opcion' | trans}}</th>
+</tr>
+</thead>
+</table>
+
+<script>
+$(document).ready(function() {
+  $('#tblist').DataTable({
+    "stateSave":true,"processing":true,
+    "language":{"url":"{{asset('/assets/datatables/Spanish.json')}}"},
+    "ajax":"{{url('systype_list')}}",
+    "order": [[ 0, "desc" ]],
+    "columns":[
+      {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/systype/"+oData.id+"/edit'>"+oData.id+"</a>");}}},
+      {"data":"parentId"},
+      {"data":"type"},
+      {"data":"name"},
+      {"data":"orderlist"},
+      {"data":"active"},
+      {"data":"codetree"},
+      {"data":"nametree"},
+      {"data":"leveltree"},
+      {"data":"property"},
+      {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/systype/"+oData.id+"/delete'><i class='bi bi-trash'></i></a>");}}},
+    ]
+   });   
+});
+</script>
+
+{% endblock %}

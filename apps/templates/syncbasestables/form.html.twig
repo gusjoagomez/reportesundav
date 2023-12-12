@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Formulario de SyncBasesTables ' | trans }} {% endblock %}
+
+{% block body %}
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message | trans }}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message | trans }}</div>
+{% endfor %}
+<br>
+<a class="btn btn-secondary" role="button" aria-disabled="true" href="{{url('syncbases_edit', {'id':regsync.id})}}">{{ 'Volver' | trans}}</a>
+
+{{ form_start(form) }}
+    <div class="col-md-6 mx-auto">
+        <h1>{{ titleform | trans }}</h1>
+
+        <hr>
+        <h5>Sincronizacion: {{regsync.description}}</h5>
+        <hr>
+        <div class="row">
+            <div class="col" id="fhost">
+                <strong>FUENTE: {{regsync.fhost}}: {{regsync.fport}}</strong><br>
+
+                {{ form_row(form.fbase) }}
+                {{ form_row(form.fschema) }}
+                {{ form_row(form.ftable) }}
+            </div>
+            <div class="col" id="thost">
+                <strong>DESTINO: {{regsync.thost}}: {{regsync.tport}}</strong><br>
+                {{ form_row(form.tbase) }}
+                {{ form_row(form.tschema) }}
+                {{ form_row(form.ttable) }}
+            </div>
+            {{ form_row(form.active) }}
+        </div>
+        {{ form_row(form.btnsubmit) }}
+        {% if borrado is defined %}<div class="alert alert-danger" role="alert">{{ 'ATENCIÓN: Usted está por eleminar este registro.' | trans }}</div>{% endif %}
+    </div>
+{{ form_end(form) }}
+
+
+{% endblock %}

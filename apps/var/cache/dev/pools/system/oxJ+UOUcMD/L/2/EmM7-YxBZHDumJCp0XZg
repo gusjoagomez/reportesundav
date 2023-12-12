@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CSyncBases%2523getFuser
+
+return [PHP_INT_MAX, []];

@@ -1,0 +1,4 @@
+postgres:password:localhost:5432 postgres:password:localhost:5432
+guarani3.negocio.mdp_personas reportesundav.guarani.mdp_personas
+guarani3.negocio.sga_docentes reportesundav.guarani.sga_docentes
+guarani3.negocio.sga_cargos reportesundav.guarani.sga_cargos

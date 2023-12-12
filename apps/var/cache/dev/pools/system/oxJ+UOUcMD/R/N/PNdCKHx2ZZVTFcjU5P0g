@@ -1,0 +1,33 @@
+<?php //App%255CEntity%255CSyncBasesTables
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'sync_bases_tables',
+                'IDX_11A9211D634A72BD',
+            ],
+            'indexes' => [
+                [
+                    $o[1],
+                ],
+            ],
+            'columns' => [
+                1 => [
+                    'id_syncbase',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[2],
+    ],
+    []
+); }];

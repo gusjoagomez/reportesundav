@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message}}</div>
+{% endfor %}
+
+
+  <a class="btn btn-secondary" role="button" aria-disabled="true" href="{{url('user_index')}}">Volver</a>
+
+  <hr>
+  <div class="card-header"><h5 class="card-title">Modificar password de usuarios</h5></div>
+  <div class="card-body">
+      {{'Usuario'|trans}}: <b>{{entity.name}}, {{entity.lastname}} </b>
+      <hr>
+      <form action="#"  class="form-horizontal" role="form" method="post">
+        {{ form_widget( form ) }}
+        <hr>
+        <input type="submit" style="float: right" class="btn btn-danger" name="submit" value="Modificar password" />
+      </form>
+      
+  </div>
+
+
+{% endblock %}

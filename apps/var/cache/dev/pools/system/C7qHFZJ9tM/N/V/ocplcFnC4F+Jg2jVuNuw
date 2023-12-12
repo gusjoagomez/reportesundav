@@ -1,0 +1,52 @@
+<?php //App%255CEntity%255CSysZone
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'sys_zone',
+                'zonas_idzonades1',
+                'zonas_idxnivpad',
+                'zonas_idxnivel',
+                'zonas_idxidsim',
+            ],
+            'indexes' => [
+                [
+                    $o[1],
+                    $o[2],
+                    $o[3],
+                    $o[4],
+                ],
+            ],
+            'columns' => [
+                1 => [
+                    'descrip',
+                ],
+                [
+                    'level',
+                    'parent',
+                ],
+                [
+                    'level',
+                ],
+                [
+                    'idsim',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[5],
+    ],
+    []
+); }];

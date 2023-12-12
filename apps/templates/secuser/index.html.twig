@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ 'Listado de Usuarios' | trans }}{% endblock %}
+
+{% block body %}
+
+<h2>{{ 'Lista de Usuarios' | trans }}</h2>
+
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message| trans}}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message | trans }}</div>
+{% endfor %}
+
+
+<a class="btn btn-primary" role="button" aria-disabled="true" href="{{url('secuser_new')}}">{{ 'Nuevo usuario' | trans }}</a>
+<table id="tblist" class="table table-sm table-striped table-bordered table-hover">
+<thead>
+<tr>
+ <th data-field="lastname">{{ 'Apellido' | trans}}</th>
+ <th data-field="name">{{ 'Nombre' | trans}}</th>
+ <th data-field="username">{{ 'USERNAME' | trans}}</th>
+ <th data-field="email">{{ 'Email' | trans}}</th>
+ <th data-field="active">{{ 'Activo' | trans}}</th>
+ <th data-field="opcionSecUser">{{'Opción' | trans}}</th>
+</tr>
+</thead>
+</table>
+
+<script>
+$(document).ready(function() {
+  $('#tblist').DataTable({
+    "stateSave":true,"processing":true,
+    "language":{"url":"{{asset('/assets/datatables/Spanish.json')}}"},
+    "ajax":"{{url('secuser_list')}}",
+    "order": [[ 0, "desc" ]],
+    "columns":[
+      {"data":"lastname"},
+      {"data":"name"},
+      {"data":"username",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/secuser/"+oData.id+"/edit'>"+oData.username+"</a>");}}},
+      {"data":"email"},
+      {"data":"active",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.active==1){$(nTd).html("✅");}else{$(nTd).html("❌");}}},
+      {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/secuser/"+oData.id+"/delete'><i class='bi bi-trash'></i></a>");}}},
+    ]
+   });   
+});
+</script>
+
+{% endblock %}

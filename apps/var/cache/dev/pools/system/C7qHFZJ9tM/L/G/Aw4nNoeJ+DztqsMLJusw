@@ -1,0 +1,39 @@
+<?php //App%255CEntity%255CSecCompanyBranch
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'sec_company_branch',
+                'IDX_5E842592979B1AD6',
+                'IDX_5E842592F92F3E70',
+            ],
+            'indexes' => [
+                [
+                    $o[1],
+                    $o[2],
+                ],
+            ],
+            'columns' => [
+                1 => [
+                    'company_id',
+                ],
+                [
+                    'country_id',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[3],
+    ],
+    []
+); }];

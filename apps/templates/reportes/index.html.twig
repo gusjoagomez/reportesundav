@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de Reportes{% endblock %}
+
+{% block body %}
+<h1>Lista de Reportes</h1>
+
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message}}</div>
+{% endfor %}
+
+<table id="tblist" class="table table-sm table-striped table-bordered table-hover">
+<thead>
+<tr>
+ <th data-field="id">Id</th>
+ <th data-field="name">Nombre Reporte</th>
+ <th data-field="description">Descripcion</th>
+ <th data-field="opcionReportes">VER</th>
+</tr>
+</thead>
+</table>
+
+<script>
+$(document).ready(function() {
+  $('#tblist').DataTable({
+    "stateSave":true,"processing":true,
+    "language":{"url":"{{asset('/assets/datatables/Spanish.json')}}"},
+    "ajax":"{{url('reportes_list')}}",
+    "order": [[ 0, "desc" ]],
+    "columns":[
+      {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/reportes/"+oData.id+"/view'>"+oData.id+"</a>");}}},
+      {"data":"name",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.name) {$(nTd).html("<a href='/reportes/"+oData.id+"/view'>"+oData.name+"</a>");}}},
+      {"data":"description"},
+      {"data":"id",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {$(nTd).html("<a href='/reportes/"+oData.id+"/view'>VER</a>");}}},
+    ]
+   });   
+});
+</script>
+
+{% endblock %}
