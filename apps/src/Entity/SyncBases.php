@@ -92,6 +92,15 @@ class SyncBases
      */
     private $active;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="posdump", type="string", nullable=true)
+     */
+    private $posdump;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -216,6 +225,19 @@ class SyncBases
 
         return $this;
     }
+
+
+    public function getPosdump(): ?string
+    {
+        return $this->posdump;
+    }
+
+    public function setPosdump(string $posdump): static
+    {
+        $this->posdump = $posdump;
+
+        return $this;
+    }    
 
 
 }

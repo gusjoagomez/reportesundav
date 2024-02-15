@@ -1,3 +1,49 @@
 <?php //App%255CController%255CCatFieldsController%2523getInfoTable
 
-return [PHP_INT_MAX, []];
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/catfields/{id}/relupdate',
+            ],
+            'methods' => [
+                [],
+            ],
+            'schemes' => [
+                [],
+            ],
+            'name' => [
+                'catfields_relupdate',
+            ],
+            'requirements' => [
+                [],
+            ],
+            'options' => [
+                [],
+            ],
+            'defaults' => [
+                [],
+            ],
+            'host' => [
+                null,
+            ],
+            'condition' => [
+                null,
+            ],
+            'priority' => [
+                null,
+            ],
+            'env' => [
+                null,
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

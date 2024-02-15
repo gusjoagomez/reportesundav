@@ -154,6 +154,7 @@ class SyncBasesController extends AbstractController
                ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
             ;
 
+        //--- genera contenido con datos de exportacion
         $filename = $this->DIR_CONFIG_SYNC.$syncbase->getId()."_".str_replace(" ","",strtolower($syncbase->getDescription())).".mig";
         $content = $syncbase->getFuser().":".$syncbase->getFpasswd().":".$syncbase->getFhost().":".$syncbase->getFport()." ".
                    $syncbase->getTuser().":".$syncbase->getTpasswd().":".$syncbase->getThost().":".$syncbase->getTport()."\n";
@@ -162,8 +163,15 @@ class SyncBasesController extends AbstractController
             $content .= $table['fbase'].".".$table['fschema'].".".$table['ftable']." ".
                         $table['tbase'].".".$table['tschema'].".".$table['ttable']."\n";
         }
-
         file_put_contents($filename,$content);
+
+
+        //--- Genera contenido con datos pos
+        $filename = $this->DIR_CONFIG_SYNC.$syncbase->getId()."_".str_replace(" ","",strtolower($syncbase->getDescription())).".pos";
+        $content = $syncbase->getPosdump()."\n";
+        file_put_contents($filename,$content);
+
+        
 
         $request->getSession()->getFlashBag()->add('message', 'Se Generó archivo para sincronizacion de tablas.');
 

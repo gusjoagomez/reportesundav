@@ -86,7 +86,7 @@ class __TwigTemplate_ed0fd70bcaa17d91a9aeba4b59ae8828 extends Template
 
         // line 7
         echo "<h1>";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Lista de Bases"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Lista de Bases - catálogo"), "html", null, true);
         echo "</h1>
 
 ";
@@ -225,7 +225,7 @@ class __TwigTemplate_ed0fd70bcaa17d91a9aeba4b59ae8828 extends Template
 {% block title %}{{ 'Listado de Bases' | trans }}{% endblock %}
 
 {% block body %}
-<h1>{{ 'Lista de Bases' | trans }}</h1>
+<h1>{{ 'Lista de Bases - catálogo' | trans }}</h1>
 
 {% for message in app.session.getFlashBag.get('message') %}
     <br><div class=\"alert alert-success\" role=\"alert\">{{message| trans}}</div>

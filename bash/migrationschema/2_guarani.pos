@@ -1,0 +1,1 @@
+sed -i "s/encode(public.digest((((random())::text || (random())::text) || (now())::text), 'sha1'::text), 'hex'::text)/''/g" /home/userdesa/www/reportesundav/bash/tmpsql/guarani3.negocio.sql

@@ -17,6 +17,15 @@ return [
         '/catbases' => [[['_route' => 'catbases_index', '_controller' => 'App\\Controller\\CatBasesController::index'], null, null, null, false, false, null]],
         '/catbases/list' => [[['_route' => 'catbases_list', '_controller' => 'App\\Controller\\CatBasesController::list'], null, null, null, false, false, null]],
         '/catbases/new' => [[['_route' => 'catbases_new', '_controller' => 'App\\Controller\\CatBasesController::new'], null, null, null, false, false, null]],
+        '/catentity' => [[['_route' => 'catentity_index', '_controller' => 'App\\Controller\\CatEntityController::index'], null, null, null, false, false, null]],
+        '/catentity/list' => [[['_route' => 'catentity_list', '_controller' => 'App\\Controller\\CatEntityController::list'], null, null, null, false, false, null]],
+        '/catentity/new' => [[['_route' => 'catentity_new', '_controller' => 'App\\Controller\\CatEntityController::new'], null, null, null, false, false, null]],
+        '/catentityfields' => [[['_route' => 'catentityfields_index', '_controller' => 'App\\Controller\\CatEntityFieldsController::index'], null, null, null, false, false, null]],
+        '/catentityfields/list' => [[['_route' => 'catentityfields_list', '_controller' => 'App\\Controller\\CatEntityFieldsController::list'], null, null, null, false, false, null]],
+        '/catentityfields/new' => [[['_route' => 'catentityfields_new', '_controller' => 'App\\Controller\\CatEntityFieldsController::new'], null, null, null, false, false, null]],
+        '/catentityrels' => [[['_route' => 'catentityrels_index', '_controller' => 'App\\Controller\\CatEntityRelsController::index'], null, null, null, false, false, null]],
+        '/catentityrels/list' => [[['_route' => 'catentityrels_list', '_controller' => 'App\\Controller\\CatEntityRelsController::list'], null, null, null, false, false, null]],
+        '/catentityrels/new' => [[['_route' => 'catentityrels_new', '_controller' => 'App\\Controller\\CatEntityRelsController::new'], null, null, null, false, false, null]],
         '/catrels' => [[['_route' => 'catrels_index', '_controller' => 'App\\Controller\\CatRelsController::index'], null, null, null, false, false, null]],
         '/catrels/list' => [[['_route' => 'catrels_list', '_controller' => 'App\\Controller\\CatRelsController::list'], null, null, null, false, false, null]],
         '/catrels/new' => [[['_route' => 'catrels_new', '_controller' => 'App\\Controller\\CatRelsController::new'], null, null, null, false, false, null]],
@@ -90,100 +99,114 @@ return [
                         .'|edit(*:198)'
                         .'|delete(*:212)'
                     .')'
+                    .'|entity(?'
+                        .'|/([^/]++)/(?'
+                            .'|edit(*:247)'
+                            .'|delete(*:261)'
+                        .')'
+                        .'|fields/([^/]++)/(?'
+                            .'|edit(*:293)'
+                            .'|delete(*:307)'
+                        .')'
+                        .'|rels/([^/]++)/(?'
+                            .'|edit(*:337)'
+                            .'|delete(*:351)'
+                        .')'
+                    .')'
                     .'|fields/([^/]++)/(?'
-                        .'|index(*:245)'
-                        .'|list(*:257)'
-                        .'|new(*:268)'
-                        .'|edit(*:280)'
-                        .'|delete(*:294)'
-                        .'|update(*:308)'
-                        .'|relupdate(*:325)'
+                        .'|index(*:385)'
+                        .'|list(*:397)'
+                        .'|new(*:408)'
+                        .'|edit(*:420)'
+                        .'|delete(*:434)'
+                        .'|update(*:448)'
+                        .'|relupdate(*:465)'
                     .')'
                     .'|rels/([^/]++)/(?'
-                        .'|edit(*:355)'
-                        .'|delete(*:369)'
+                        .'|edit(*:495)'
+                        .'|delete(*:509)'
                     .')'
                     .'|table/([^/]++)/(?'
-                        .'|index(*:401)'
-                        .'|list(*:413)'
-                        .'|edit(*:425)'
-                        .'|delete(*:439)'
-                        .'|update(*:453)'
+                        .'|index(*:541)'
+                        .'|list(*:553)'
+                        .'|edit(*:565)'
+                        .'|delete(*:579)'
+                        .'|update(*:593)'
                     .')'
                 .')'
                 .'|/reportes/([^/]++)/(?'
-                    .'|view(*:489)'
-                    .'|detalle(*:504)'
+                    .'|view(*:629)'
+                    .'|detalle(*:644)'
                 .')'
                 .'|/s(?'
                     .'|ec(?'
                         .'|audit/([^/]++)/(?'
-                            .'|edit(*:545)'
-                            .'|delete(*:559)'
+                            .'|edit(*:685)'
+                            .'|delete(*:699)'
                         .')'
                         .'|company/([^/]++)/(?'
-                            .'|edit(*:592)'
-                            .'|delete(*:606)'
+                            .'|edit(*:732)'
+                            .'|delete(*:746)'
                         .')'
                         .'|menu/([^/]++)/(?'
-                            .'|edit(*:636)'
-                            .'|delete(*:650)'
+                            .'|edit(*:776)'
+                            .'|delete(*:790)'
                         .')'
                         .'|role(?'
                             .'|/([^/]++)/(?'
-                                .'|edit(*:683)'
-                                .'|delete(*:697)'
+                                .'|edit(*:823)'
+                                .'|delete(*:837)'
                             .')'
                             .'|menu/([^/]++)/(?'
-                                .'|edit(*:727)'
-                                .'|delete(*:741)'
+                                .'|edit(*:867)'
+                                .'|delete(*:881)'
                             .')'
                         .')'
                         .'|user/([^/]++)/(?'
-                            .'|edit(*:772)'
-                            .'|delete(*:786)'
+                            .'|edit(*:912)'
+                            .'|delete(*:926)'
                         .')'
                     .')'
                     .'|y(?'
                         .'|ncbases(?'
                             .'|/([^/]++)/(?'
-                                .'|edit(*:827)'
-                                .'|delete(*:841)'
-                                .'|genfile(*:856)'
+                                .'|edit(*:967)'
+                                .'|delete(*:981)'
+                                .'|genfile(*:996)'
                             .')'
                             .'|tables/([^/]++)/(?'
-                                .'|list(*:888)'
-                                .'|new(*:899)'
-                                .'|edit(*:911)'
-                                .'|delete(*:925)'
+                                .'|list(*:1028)'
+                                .'|new(*:1040)'
+                                .'|edit(*:1053)'
+                                .'|delete(*:1068)'
                             .')'
                         .')'
                         .'|s(?'
                             .'|type(?'
                                 .'|/([^/]++)/(?'
-                                    .'|edit(*:963)'
-                                    .'|delete(*:977)'
+                                    .'|edit(*:1107)'
+                                    .'|delete(*:1122)'
                                 .')'
                                 .'|type/([^/]++)/(?'
-                                    .'|edit(*:1007)'
-                                    .'|delete(*:1022)'
+                                    .'|edit(*:1153)'
+                                    .'|delete(*:1168)'
                                 .')'
                             .')'
                             .'|zone/([^/]++)/(?'
-                                .'|edit(*:1054)'
-                                .'|delete(*:1069)'
+                                .'|edit(*:1200)'
+                                .'|delete(*:1215)'
                             .')'
                         .')'
                     .')'
                 .')'
                 .'|/test/([^/]++)/(?'
-                    .'|edit(*:1104)'
-                    .'|delete(*:1119)'
+                    .'|edit(*:1250)'
+                    .'|delete(*:1265)'
                 .')'
                 .'|/user/([^/]++)/(?'
-                    .'|edit(*:1151)'
-                    .'|delete(*:1166)'
-                    .'|chopass(*:1182)'
+                    .'|edit(*:1297)'
+                    .'|delete(*:1312)'
+                    .'|chopass(*:1328)'
                 .')'
             .')/?$}sDu',
     ],
@@ -197,52 +220,58 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         198 => [[['_route' => 'catbases_edit', '_controller' => 'App\\Controller\\CatBasesController::edit'], ['id'], null, null, false, false, null]],
         212 => [[['_route' => 'catbases_delete', '_controller' => 'App\\Controller\\CatBasesController::delete'], ['id'], null, null, false, false, null]],
-        245 => [[['_route' => 'catfields_index', '_controller' => 'App\\Controller\\CatFieldsController::index'], ['id'], null, null, false, false, null]],
-        257 => [[['_route' => 'catfields_list', '_controller' => 'App\\Controller\\CatFieldsController::list'], ['id'], null, null, false, false, null]],
-        268 => [[['_route' => 'catfields_new', '_controller' => 'App\\Controller\\CatFieldsController::new'], ['id'], null, null, false, false, null]],
-        280 => [[['_route' => 'catfields_edit', '_controller' => 'App\\Controller\\CatFieldsController::edit'], ['id'], null, null, false, false, null]],
-        294 => [[['_route' => 'catfields_delete', '_controller' => 'App\\Controller\\CatFieldsController::delete'], ['id'], null, null, false, false, null]],
-        308 => [[['_route' => 'catfields_update', '_controller' => 'App\\Controller\\CatFieldsController::update'], ['id'], null, null, false, false, null]],
-        325 => [[['_route' => 'catfields_relupdate', '_controller' => 'App\\Controller\\CatFieldsController::relupdate'], ['id'], null, null, false, false, null]],
-        355 => [[['_route' => 'catrels_edit', '_controller' => 'App\\Controller\\CatRelsController::edit'], ['id'], null, null, false, false, null]],
-        369 => [[['_route' => 'catrels_delete', '_controller' => 'App\\Controller\\CatRelsController::delete'], ['id'], null, null, false, false, null]],
-        401 => [[['_route' => 'cattable_index', '_controller' => 'App\\Controller\\CatTableController::index'], ['id'], null, null, false, false, null]],
-        413 => [[['_route' => 'cattable_list', '_controller' => 'App\\Controller\\CatTableController::list'], ['id'], null, null, false, false, null]],
-        425 => [[['_route' => 'cattable_edit', '_controller' => 'App\\Controller\\CatTableController::edit'], ['id'], null, null, false, false, null]],
-        439 => [[['_route' => 'cattable_delete', '_controller' => 'App\\Controller\\CatTableController::delete'], ['id'], null, null, false, false, null]],
-        453 => [[['_route' => 'cattable_update', '_controller' => 'App\\Controller\\CatTableController::update'], ['id'], null, null, false, false, null]],
-        489 => [[['_route' => 'reportes_view', '_controller' => 'App\\Controller\\ReportesController::view'], ['id'], null, null, false, false, null]],
-        504 => [[['_route' => 'reportes_detalle', '_controller' => 'App\\Controller\\ReportesController::reportesdetallegrilla'], ['id'], null, null, false, false, null]],
-        545 => [[['_route' => 'secaudit_edit', '_controller' => 'App\\Controller\\SecAuditController::edit'], ['id'], null, null, false, false, null]],
-        559 => [[['_route' => 'secaudit_delete', '_controller' => 'App\\Controller\\SecAuditController::delete'], ['id'], null, null, false, false, null]],
-        592 => [[['_route' => 'seccompany_edit', '_controller' => 'App\\Controller\\SecCompanyController::edit'], ['id'], null, null, false, false, null]],
-        606 => [[['_route' => 'seccompany_delete', '_controller' => 'App\\Controller\\SecCompanyController::delete'], ['id'], null, null, false, false, null]],
-        636 => [[['_route' => 'secmenu_edit', '_controller' => 'App\\Controller\\SecMenuController::edit'], ['id'], null, null, false, false, null]],
-        650 => [[['_route' => 'secmenu_delete', '_controller' => 'App\\Controller\\SecMenuController::delete'], ['id'], null, null, false, false, null]],
-        683 => [[['_route' => 'secrole_edit', '_controller' => 'App\\Controller\\SecRoleController::edit'], ['id'], null, null, false, false, null]],
-        697 => [[['_route' => 'secrole_delete', '_controller' => 'App\\Controller\\SecRoleController::delete'], ['id'], null, null, false, false, null]],
-        727 => [[['_route' => 'secrolemenu_edit', '_controller' => 'App\\Controller\\SecRolemenuController::edit'], ['id'], null, null, false, false, null]],
-        741 => [[['_route' => 'secrolemenu_delete', '_controller' => 'App\\Controller\\SecRolemenuController::delete'], ['id'], null, null, false, false, null]],
-        772 => [[['_route' => 'secuser_edit', '_controller' => 'App\\Controller\\SecUserController::edit'], ['id'], null, null, false, false, null]],
-        786 => [[['_route' => 'secuser_delete', '_controller' => 'App\\Controller\\SecUserController::delete'], ['id'], null, null, false, false, null]],
-        827 => [[['_route' => 'syncbases_edit', '_controller' => 'App\\Controller\\SyncBasesController::edit'], ['id'], null, null, false, false, null]],
-        841 => [[['_route' => 'syncbases_delete', '_controller' => 'App\\Controller\\SyncBasesController::delete'], ['id'], null, null, false, false, null]],
-        856 => [[['_route' => 'syncbases_genfile', '_controller' => 'App\\Controller\\SyncBasesController::genfile'], ['id'], null, null, false, false, null]],
-        888 => [[['_route' => 'syncbasestables_list', '_controller' => 'App\\Controller\\SyncBasesTablesController::list'], ['id'], null, null, false, false, null]],
-        899 => [[['_route' => 'syncbasestables_new', '_controller' => 'App\\Controller\\SyncBasesTablesController::new'], ['id'], null, null, false, false, null]],
-        911 => [[['_route' => 'syncbasestables_edit', '_controller' => 'App\\Controller\\SyncBasesTablesController::edit'], ['id'], null, null, false, false, null]],
-        925 => [[['_route' => 'syncbasestables_delete', '_controller' => 'App\\Controller\\SyncBasesTablesController::delete'], ['id'], null, null, false, false, null]],
-        963 => [[['_route' => 'systype_edit', '_controller' => 'App\\Controller\\SysTypeController::edit'], ['id'], null, null, false, false, null]],
-        977 => [[['_route' => 'systype_delete', '_controller' => 'App\\Controller\\SysTypeController::delete'], ['id'], null, null, false, false, null]],
-        1007 => [[['_route' => 'systypetype_edit', '_controller' => 'App\\Controller\\SysTypetypeController::edit'], ['id'], null, null, false, false, null]],
-        1022 => [[['_route' => 'systypetype_delete', '_controller' => 'App\\Controller\\SysTypetypeController::delete'], ['id'], null, null, false, false, null]],
-        1054 => [[['_route' => 'syszone_edit', '_controller' => 'App\\Controller\\SysZoneController::edit'], ['id'], null, null, false, false, null]],
-        1069 => [[['_route' => 'syszone_delete', '_controller' => 'App\\Controller\\SysZoneController::delete'], ['id'], null, null, false, false, null]],
-        1104 => [[['_route' => 'test_edit', '_controller' => 'App\\Controller\\TestController::edit'], ['id'], null, null, false, false, null]],
-        1119 => [[['_route' => 'test_delete', '_controller' => 'App\\Controller\\TestController::delete'], ['id'], null, null, false, false, null]],
-        1151 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], null, null, false, false, null]],
-        1166 => [[['_route' => 'user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], null, null, false, false, null]],
-        1182 => [
+        247 => [[['_route' => 'catentity_edit', '_controller' => 'App\\Controller\\CatEntityController::edit'], ['id'], null, null, false, false, null]],
+        261 => [[['_route' => 'catentity_delete', '_controller' => 'App\\Controller\\CatEntityController::delete'], ['id'], null, null, false, false, null]],
+        293 => [[['_route' => 'catentityfields_edit', '_controller' => 'App\\Controller\\CatEntityFieldsController::edit'], ['id'], null, null, false, false, null]],
+        307 => [[['_route' => 'catentityfields_delete', '_controller' => 'App\\Controller\\CatEntityFieldsController::delete'], ['id'], null, null, false, false, null]],
+        337 => [[['_route' => 'catentityrels_edit', '_controller' => 'App\\Controller\\CatEntityRelsController::edit'], ['id'], null, null, false, false, null]],
+        351 => [[['_route' => 'catentityrels_delete', '_controller' => 'App\\Controller\\CatEntityRelsController::delete'], ['id'], null, null, false, false, null]],
+        385 => [[['_route' => 'catfields_index', '_controller' => 'App\\Controller\\CatFieldsController::index'], ['id'], null, null, false, false, null]],
+        397 => [[['_route' => 'catfields_list', '_controller' => 'App\\Controller\\CatFieldsController::list'], ['id'], null, null, false, false, null]],
+        408 => [[['_route' => 'catfields_new', '_controller' => 'App\\Controller\\CatFieldsController::new'], ['id'], null, null, false, false, null]],
+        420 => [[['_route' => 'catfields_edit', '_controller' => 'App\\Controller\\CatFieldsController::edit'], ['id'], null, null, false, false, null]],
+        434 => [[['_route' => 'catfields_delete', '_controller' => 'App\\Controller\\CatFieldsController::delete'], ['id'], null, null, false, false, null]],
+        448 => [[['_route' => 'catfields_update', '_controller' => 'App\\Controller\\CatFieldsController::update'], ['id'], null, null, false, false, null]],
+        465 => [[['_route' => 'catfields_relupdate', '_controller' => 'App\\Controller\\CatFieldsController::getInfoTable'], ['id'], null, null, false, false, null]],
+        495 => [[['_route' => 'catrels_edit', '_controller' => 'App\\Controller\\CatRelsController::edit'], ['id'], null, null, false, false, null]],
+        509 => [[['_route' => 'catrels_delete', '_controller' => 'App\\Controller\\CatRelsController::delete'], ['id'], null, null, false, false, null]],
+        541 => [[['_route' => 'cattable_index', '_controller' => 'App\\Controller\\CatTableController::index'], ['id'], null, null, false, false, null]],
+        553 => [[['_route' => 'cattable_list', '_controller' => 'App\\Controller\\CatTableController::list'], ['id'], null, null, false, false, null]],
+        565 => [[['_route' => 'cattable_edit', '_controller' => 'App\\Controller\\CatTableController::edit'], ['id'], null, null, false, false, null]],
+        579 => [[['_route' => 'cattable_delete', '_controller' => 'App\\Controller\\CatTableController::delete'], ['id'], null, null, false, false, null]],
+        593 => [[['_route' => 'cattable_update', '_controller' => 'App\\Controller\\CatTableController::update'], ['id'], null, null, false, false, null]],
+        629 => [[['_route' => 'reportes_view', '_controller' => 'App\\Controller\\ReportesController::view'], ['id'], null, null, false, false, null]],
+        644 => [[['_route' => 'reportes_detalle', '_controller' => 'App\\Controller\\ReportesController::reportesdetallegrilla'], ['id'], null, null, false, false, null]],
+        685 => [[['_route' => 'secaudit_edit', '_controller' => 'App\\Controller\\SecAuditController::edit'], ['id'], null, null, false, false, null]],
+        699 => [[['_route' => 'secaudit_delete', '_controller' => 'App\\Controller\\SecAuditController::delete'], ['id'], null, null, false, false, null]],
+        732 => [[['_route' => 'seccompany_edit', '_controller' => 'App\\Controller\\SecCompanyController::edit'], ['id'], null, null, false, false, null]],
+        746 => [[['_route' => 'seccompany_delete', '_controller' => 'App\\Controller\\SecCompanyController::delete'], ['id'], null, null, false, false, null]],
+        776 => [[['_route' => 'secmenu_edit', '_controller' => 'App\\Controller\\SecMenuController::edit'], ['id'], null, null, false, false, null]],
+        790 => [[['_route' => 'secmenu_delete', '_controller' => 'App\\Controller\\SecMenuController::delete'], ['id'], null, null, false, false, null]],
+        823 => [[['_route' => 'secrole_edit', '_controller' => 'App\\Controller\\SecRoleController::edit'], ['id'], null, null, false, false, null]],
+        837 => [[['_route' => 'secrole_delete', '_controller' => 'App\\Controller\\SecRoleController::delete'], ['id'], null, null, false, false, null]],
+        867 => [[['_route' => 'secrolemenu_edit', '_controller' => 'App\\Controller\\SecRolemenuController::edit'], ['id'], null, null, false, false, null]],
+        881 => [[['_route' => 'secrolemenu_delete', '_controller' => 'App\\Controller\\SecRolemenuController::delete'], ['id'], null, null, false, false, null]],
+        912 => [[['_route' => 'secuser_edit', '_controller' => 'App\\Controller\\SecUserController::edit'], ['id'], null, null, false, false, null]],
+        926 => [[['_route' => 'secuser_delete', '_controller' => 'App\\Controller\\SecUserController::delete'], ['id'], null, null, false, false, null]],
+        967 => [[['_route' => 'syncbases_edit', '_controller' => 'App\\Controller\\SyncBasesController::edit'], ['id'], null, null, false, false, null]],
+        981 => [[['_route' => 'syncbases_delete', '_controller' => 'App\\Controller\\SyncBasesController::delete'], ['id'], null, null, false, false, null]],
+        996 => [[['_route' => 'syncbases_genfile', '_controller' => 'App\\Controller\\SyncBasesController::genfile'], ['id'], null, null, false, false, null]],
+        1028 => [[['_route' => 'syncbasestables_list', '_controller' => 'App\\Controller\\SyncBasesTablesController::list'], ['id'], null, null, false, false, null]],
+        1040 => [[['_route' => 'syncbasestables_new', '_controller' => 'App\\Controller\\SyncBasesTablesController::new'], ['id'], null, null, false, false, null]],
+        1053 => [[['_route' => 'syncbasestables_edit', '_controller' => 'App\\Controller\\SyncBasesTablesController::edit'], ['id'], null, null, false, false, null]],
+        1068 => [[['_route' => 'syncbasestables_delete', '_controller' => 'App\\Controller\\SyncBasesTablesController::delete'], ['id'], null, null, false, false, null]],
+        1107 => [[['_route' => 'systype_edit', '_controller' => 'App\\Controller\\SysTypeController::edit'], ['id'], null, null, false, false, null]],
+        1122 => [[['_route' => 'systype_delete', '_controller' => 'App\\Controller\\SysTypeController::delete'], ['id'], null, null, false, false, null]],
+        1153 => [[['_route' => 'systypetype_edit', '_controller' => 'App\\Controller\\SysTypetypeController::edit'], ['id'], null, null, false, false, null]],
+        1168 => [[['_route' => 'systypetype_delete', '_controller' => 'App\\Controller\\SysTypetypeController::delete'], ['id'], null, null, false, false, null]],
+        1200 => [[['_route' => 'syszone_edit', '_controller' => 'App\\Controller\\SysZoneController::edit'], ['id'], null, null, false, false, null]],
+        1215 => [[['_route' => 'syszone_delete', '_controller' => 'App\\Controller\\SysZoneController::delete'], ['id'], null, null, false, false, null]],
+        1250 => [[['_route' => 'test_edit', '_controller' => 'App\\Controller\\TestController::edit'], ['id'], null, null, false, false, null]],
+        1265 => [[['_route' => 'test_delete', '_controller' => 'App\\Controller\\TestController::delete'], ['id'], null, null, false, false, null]],
+        1297 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], null, null, false, false, null]],
+        1312 => [[['_route' => 'user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], null, null, false, false, null]],
+        1328 => [
             [['_route' => 'user_chopass', '_controller' => 'App\\Controller\\UserController::chopass'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],

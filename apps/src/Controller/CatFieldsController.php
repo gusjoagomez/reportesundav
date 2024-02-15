@@ -143,7 +143,8 @@ class CatFieldsController extends AbstractController
 
     /**
      * @Route("/catfields/{id}/relupdate", name="catfields_relupdate")
-     */    
+     */
+    /*
     public function relupdate(Request $request,Connection $app, CatTable $table, EntityManagerInterface $entityManager): Response
     {
         $conn = Utilgenerator::getCustomConn($table->getBase());
@@ -151,13 +152,11 @@ class CatFieldsController extends AbstractController
         $tablename = $table->getTablename();
 
         $listaRel = Utilgenerator::getInfoFK($conn, $schemaname, $tablename);
-        echo "<pre>";
-        print_r($listaRel); 
-        echo "</pre>";
-        die();
+        echo "<pre>";print_r($listaRel); echo "</pre>";die();
 
         return $this->redirectToRoute('catfields_index',['id'=>$table->getId()]);
     }
+    */
 
 
     function getInfoTable(EntityManagerInterface $entityManager, Connection $app, Connection $conn, CatTable $table)
@@ -171,46 +170,50 @@ class CatFieldsController extends AbstractController
         $tablename = $table->getTablename();
         $tblname = $schemaname.'.'.$tablename;
 
+        $fks = Utilgenerator::getInfoFK($conn,  $schemaname, $tablename);
+        foreach ($fks as $key => $value) {
+            if(isset($fks['has'])){
+                foreach ($fks['has'] as $kh=>$vh){
+                    $fieldinfo[$kh]['fk']=$vh; 
+                }
+            }
+        }
+
+        //Trae los campos de la tabla
         $fields = Utilgenerator::getFields($conn, $tblname);
         
         foreach ($fields as $k=>$field) 
         {
-            //echo "<pre>"; print_r($field); echo "</pre>";
-
             $existe = $repFields->findOneBy(['schemaname' => $schemaname, 'tablename' => $tablename, 'fieldname' => $field['name'] ]);
             if ($existe==null){
-                $fks = Utilgenerator::getInfoFK($conn,  $schemaname, $tablename) ;
-                
-                //echo "*-";
-
-                foreach ($fks as $key => $value) {
-                    if(isset($fks['has'])){
-                        foreach ($fks['has'] as $kh=>$vh){
-                            $fieldinfo[$kh]['fk']=$vh; 
-                        }
-                    }
-                }
-
                 $fld = new CatFields();
                 $fld->setTable($table);
                 $fld->setSchemaname($schemaname);
                 $fld->setTablename($tablename);
                 $fld->setFieldname($field['name']);
-                $fld->setTypename($field['type']);
-                $fld->setEsnull($field['null']);
-                $fld->setPk($field['pri']);
-                $fld->setFtable('xx');
-                $fld->setFkey('xx');
-                $fld->setLabel($field['column']);
-                $fld->setLabelhelp($field['column']);
-                $fld->setOrderlist($field['orderlist']);
-                $fld->setInlist('1');
-                $fld->setIncrud('1');
-                
-
-                $entityManager->persist($fld);
-                $entityManager->flush();     
+            }else{
+                $fld = $existe;
             }
+
+            $Ftable = "";
+            $Fkey = "";
+            if (isset($fieldinfo[$field['name']])){
+                $Ftable = $fieldinfo[$field['name']]['fk']['t'];
+                $Fkey = $fieldinfo[$field['name']]['fk']['c'];
+            }
+            $fld->setTypename($field['type']);
+            $fld->setEsnull($field['null']);
+            $fld->setPk($field['pri']);
+            $fld->setFtable($Ftable);
+            $fld->setFkey($Fkey);
+            $fld->setLabel($field['column']);
+            $fld->setLabelhelp($field['column']);
+            $fld->setOrderlist($field['orderlist']);
+            $fld->setInlist('1');
+            $fld->setIncrud('1');
+
+            $entityManager->persist($fld);
+            $entityManager->flush();     
         }    
 
         return $infodb;

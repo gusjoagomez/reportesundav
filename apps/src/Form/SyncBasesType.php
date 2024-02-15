@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class SyncBasesType extends AbstractType
@@ -41,6 +42,7 @@ class SyncBasesType extends AbstractType
             ->add('tuser',null,['label'=>'Usuario','required' => true])
             ->add('tpasswd',null,['label'=>'Password','required' => true])
             ->add('tport',null,['label'=>'Port','required' => true])
+            ->add('posdump',TextareaType::class,['label'=>'Posdump','required' => false])
             ->add('active',  ChoiceType::class, [
                   'choices' => array('Si' =>1,  'No'=>0),
                   'label'=>'Activo','required' => true
