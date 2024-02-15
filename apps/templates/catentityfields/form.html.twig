@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Formulario de CatEntityFields ' | trans }} {% endblock %}
+
+{% block body %}
+{% for message in app.session.getFlashBag.get('message') %}
+    <br><div class="alert alert-success" role="alert">{{message | trans }}</div>
+{% endfor %}
+{% for message in app.session.getFlashBag.get('messageerr') %}
+    <br><div class="alert alert-danger" role="alert">{{message | trans }}</div>
+{% endfor %}
+<br>
+<a class="btn btn-secondary" role="button" aria-disabled="true" href="{{url('catentityfields_index')}}">{{ 'Volver' | trans}}</a>
+
+<h1>{{ titleform | trans }}</h1>
+
+{% if borrado is defined %}<div class="alert alert-danger" role="alert">{{ 'ATENCIÓN: Usted está por eleminar este registro.' | trans }}</div>{% endif %}
+{{form(form)}}
+
+{% endblock %}

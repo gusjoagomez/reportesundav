@@ -182,37 +182,42 @@ class __TwigTemplate_8c8fbc053300d1b47f2b576a9c9f3da3 extends Template
         // line 37
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 37, $this->source); })()), "active", [], "any", false, false, false, 37), 'row');
         echo "
+            ";
+        // line 38
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 38, $this->source); })()), "posdump", [], "any", false, false, false, 38), 'row');
+        echo "
         </div>
         ";
-        // line 39
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 39, $this->source); })()), "btnsubmit", [], "any", false, false, false, 39), 'row');
+        // line 40
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 40, $this->source); })()), "btnsubmit", [], "any", false, false, false, 40), 'row');
         echo "
+        *NOTA*: posdump son comandos que se ejecutan luego de generar el archivo de dump da la base de datos origen. En general se utiliza para corregir datos del archivo de script generado.
     </div>
 
 ";
-        // line 42
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 42, $this->source); })()), 'form_end');
+        // line 44
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 44, $this->source); })()), 'form_end');
         echo "
 
 ";
-        // line 44
+        // line 46
         if (array_key_exists("borrado", $context)) {
             echo "<div class=\"alert alert-danger\" role=\"alert\">";
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("ATENCIÓN: Usted está por eleminar este registro."), "html", null, true);
             echo "</div>";
         }
-        // line 45
+        // line 47
         echo "
 ";
-        // line 46
+        // line 48
         if (array_key_exists("regsync", $context)) {
-            // line 47
+            // line 49
             echo "    <hr>
     <div class=\"col-md-6 mx-auto\">
     <h2>Tablas a sincronizar</h2>
     <a class=\"btn btn-primary\" role=\"button\" aria-disabled=\"true\" href=\"";
-            // line 50
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("syncbasestables_new", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 50, $this->source); })()), "id", [], "any", false, false, false, 50)]), "html", null, true);
+            // line 52
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("syncbasestables_new", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 52, $this->source); })()), "id", [], "any", false, false, false, 52)]), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Nuevo tabla"), "html", null, true);
             echo "</a>
@@ -220,35 +225,35 @@ class __TwigTemplate_8c8fbc053300d1b47f2b576a9c9f3da3 extends Template
     <thead>
     <tr>
     <th data-field=\"fbase\">";
-            // line 54
+            // line 56
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Base fuente"), "html", null, true);
             echo "</th>
     <th data-field=\"fschema\">";
-            // line 55
+            // line 57
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Esquema fuente"), "html", null, true);
             echo "</th>
     <th data-field=\"ftable\">";
-            // line 56
+            // line 58
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Tabla fuente"), "html", null, true);
             echo "</th>
     <th data-field=\"tbase\">";
-            // line 57
+            // line 59
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Base destino"), "html", null, true);
             echo "</th>
     <th data-field=\"tschema\">";
-            // line 58
+            // line 60
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Esquema destino"), "html", null, true);
             echo "</th>
     <th data-field=\"ttable\">";
-            // line 59
+            // line 61
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Tabla destino"), "html", null, true);
             echo "</th>
     <th data-field=\"active\">";
-            // line 60
+            // line 62
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Activa"), "html", null, true);
             echo "</th>
     <th data-field=\"opcionSyncBasesTables\">";
-            // line 61
+            // line 63
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Opcion"), "html", null, true);
             echo "</th>
     </tr>
@@ -261,12 +266,12 @@ class __TwigTemplate_8c8fbc053300d1b47f2b576a9c9f3da3 extends Template
     \$('#tblist').DataTable({
         \"stateSave\":true,\"processing\":true,
         \"language\":{\"url\":\"";
-            // line 71
+            // line 73
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/datatables/Spanish.json"), "html", null, true);
             echo "\"},
         \"ajax\":\"";
-            // line 72
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("syncbasestables_list", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 72, $this->source); })()), "id", [], "any", false, false, false, 72)]), "html", null, true);
+            // line 74
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("syncbasestables_list", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 74, $this->source); })()), "id", [], "any", false, false, false, 74)]), "html", null, true);
             echo "\",
         \"order\": [[ 0, \"desc\" ]],
         \"columns\":[
@@ -286,39 +291,39 @@ class __TwigTemplate_8c8fbc053300d1b47f2b576a9c9f3da3 extends Template
         <hr>
         <div class=\"col-md-6 mx-auto\">
         ";
-            // line 90
-            if (twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 90, $this->source); })()), "active", [], "any", false, false, false, 90)) {
-                // line 91
+            // line 92
+            if (twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 92, $this->source); })()), "active", [], "any", false, false, false, 92)) {
+                // line 93
                 echo "            <a class=\"btn btn-warning\" role=\"button\" aria-disabled=\"true\" href=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("syncbases_genfile", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 91, $this->source); })()), "id", [], "any", false, false, false, 91)]), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("syncbases_genfile", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["regsync"]) || array_key_exists("regsync", $context) ? $context["regsync"] : (function () { throw new RuntimeError('Variable "regsync" does not exist.', 93, $this->source); })()), "id", [], "any", false, false, false, 93)]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Generar archivo de configuracion de sincronizacion"), "html", null, true);
                 echo "</a>
         ";
             } else {
-                // line 93
+                // line 95
                 echo "            <strong><h5>****** Esta tarea no está activa ******</h5></strong>
         ";
             }
-            // line 95
+            // line 97
             echo "
           ";
-            // line 96
-            if (((isset($context["archivoGenerado"]) || array_key_exists("archivoGenerado", $context) ? $context["archivoGenerado"] : (function () { throw new RuntimeError('Variable "archivoGenerado" does not exist.', 96, $this->source); })()) != "")) {
-                // line 97
+            // line 98
+            if (((isset($context["archivoGenerado"]) || array_key_exists("archivoGenerado", $context) ? $context["archivoGenerado"] : (function () { throw new RuntimeError('Variable "archivoGenerado" does not exist.', 98, $this->source); })()) != "")) {
+                // line 99
                 echo "          <br><strong><h5>Archivo Generado:  ";
-                echo twig_escape_filter($this->env, (isset($context["archivoGenerado"]) || array_key_exists("archivoGenerado", $context) ? $context["archivoGenerado"] : (function () { throw new RuntimeError('Variable "archivoGenerado" does not exist.', 97, $this->source); })()), "html", null, true);
+                echo twig_escape_filter($this->env, (isset($context["archivoGenerado"]) || array_key_exists("archivoGenerado", $context) ? $context["archivoGenerado"] : (function () { throw new RuntimeError('Variable "archivoGenerado" does not exist.', 99, $this->source); })()), "html", null, true);
                 echo "</h5></strong>
           ";
             }
-            // line 99
+            // line 101
             echo "
         </div>
 
     <hr>
 ";
         }
-        // line 104
+        // line 106
         echo "
 <br><br><br>
 
@@ -343,7 +348,7 @@ class __TwigTemplate_8c8fbc053300d1b47f2b576a9c9f3da3 extends Template
 
     public function getDebugInfo()
     {
-        return array (  322 => 104,  315 => 99,  309 => 97,  307 => 96,  304 => 95,  300 => 93,  292 => 91,  290 => 90,  269 => 72,  265 => 71,  252 => 61,  248 => 60,  244 => 59,  240 => 58,  236 => 57,  232 => 56,  228 => 55,  224 => 54,  215 => 50,  210 => 47,  208 => 46,  205 => 45,  199 => 44,  194 => 42,  188 => 39,  183 => 37,  178 => 35,  174 => 34,  170 => 33,  166 => 32,  160 => 29,  156 => 28,  152 => 27,  148 => 26,  143 => 24,  135 => 19,  130 => 17,  125 => 15,  118 => 13,  115 => 12,  106 => 10,  102 => 9,  93 => 7,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  327 => 106,  320 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  297 => 93,  295 => 92,  274 => 74,  270 => 73,  257 => 63,  253 => 62,  249 => 61,  245 => 60,  241 => 59,  237 => 58,  233 => 57,  229 => 56,  220 => 52,  215 => 49,  213 => 48,  210 => 47,  204 => 46,  199 => 44,  192 => 40,  187 => 38,  183 => 37,  178 => 35,  174 => 34,  170 => 33,  166 => 32,  160 => 29,  156 => 28,  152 => 27,  148 => 26,  143 => 24,  135 => 19,  130 => 17,  125 => 15,  118 => 13,  115 => 12,  106 => 10,  102 => 9,  93 => 7,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -385,8 +390,10 @@ class __TwigTemplate_8c8fbc053300d1b47f2b576a9c9f3da3 extends Template
                 {{ form_row(form.tpasswd) }}
             </div>
             {{ form_row(form.active) }}
+            {{ form_row(form.posdump) }}
         </div>
         {{ form_row(form.btnsubmit) }}
+        *NOTA*: posdump son comandos que se ejecutan luego de generar el archivo de dump da la base de datos origen. En general se utiliza para corregir datos del archivo de script generado.
     </div>
 
 {{ form_end(form) }}

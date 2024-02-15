@@ -2,4 +2,4 @@ postgres:Dcenturion01:172.16.1.34:5432 postgres:password:localhost:5432
 siu.mapuche.dh03 reportesundav.mapuche.dh03
 siu.mapuche.dh01 reportesundav.mapuche.dh01
 siu.mapuche_auditoria.logs_dh01 reportesundav.mapuche.logs_dh01
-siu.mapuche_auditoria.logs_dh03 reportesundav.mapuche.logs_dh03333
+siu.mapuche_auditoria.logs_dh03 reportesundav.mapuche.logs_dh03

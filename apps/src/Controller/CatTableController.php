@@ -174,10 +174,10 @@ class CatTableController extends AbstractController
                 }
 
                 $fk = Utilgenerator::getInfoFK($conn, $schemaname, $tablename);
-                echo "<pre>"; print_r($fk); echo "</pre>";
+               ///echo "<pre>"; print_r($fk); echo "</pre>";
             }
         }
-        die();
+        //die();
         return $infodb;
     }
 

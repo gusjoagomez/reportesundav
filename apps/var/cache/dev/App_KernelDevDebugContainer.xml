@@ -352,6 +352,27 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CatBasesController"/>
       </call>
     </service>
+    <service id="App\Controller\CatEntityController" class="App\Controller\CatEntityController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CatEntityController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CatEntityFieldsController" class="App\Controller\CatEntityFieldsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CatEntityFieldsController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CatEntityRelsController" class="App\Controller\CatEntityRelsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CatEntityRelsController"/>
+      </call>
+    </service>
     <service id="App\Controller\CatFieldsController" class="App\Controller\CatFieldsController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -493,6 +514,15 @@
     <service id="App\Form\CatBasesType" class="App\Form\CatBasesType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\CatEntityFieldsType" class="App\Form\CatEntityFieldsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CatEntityRelsType" class="App\Form\CatEntityRelsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CatEntityType" class="App\Form\CatEntityType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\CatFieldsType" class="App\Form\CatFieldsType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -536,6 +566,18 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\CatBasesRepository" class="App\Repository\CatBasesRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CatEntityFieldsRepository" class="App\Repository\CatEntityFieldsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CatEntityRelsRepository" class="App\Repository\CatEntityRelsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CatEntityRepository" class="App\Repository\CatEntityRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -632,7 +674,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.5m2qX.T"/>
+      <argument type="service" id=".service_locator.0tcEkgn"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1500,6 +1542,9 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\CatBasesType</argument>
+        <argument>App\Form\CatEntityFieldsType</argument>
+        <argument>App\Form\CatEntityRelsType</argument>
+        <argument>App\Form\CatEntityType</argument>
         <argument>App\Form\CatFieldsType</argument>
         <argument>App\Form\CatRelsType</argument>
         <argument>App\Form\CatTableType</argument>
@@ -2956,14 +3001,6 @@
         <argument>-100</argument>
       </call>
       <call method="addListener">
-        <argument>Symfony\Component\Messenger\Event\WorkerRunningEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="messenger.listener.dispatch_pcntl_signal_listener"/>
-          <argument>onWorkerRunning</argument>
-        </argument>
-        <argument>100</argument>
-      </call>
-      <call method="addListener">
         <argument>Symfony\Component\Messenger\Event\WorkerStartedEvent</argument>
         <argument type="collection">
           <argument type="service_closure" id="messenger.listener.stop_worker_on_restart_signal_listener"/>
@@ -3273,7 +3310,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.5m2qX.T"/>
+      <argument type="service" id=".service_locator.0tcEkgn"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -3802,7 +3839,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.RoyBYT1"/>
+      <argument type="service" id=".service_locator.iWkBTkU"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4944,7 +4981,9 @@
       </argument>
       <argument type="service" id="doctrine.dbal.default_connection.configuration"/>
       <argument type="service" id="doctrine.dbal.default_connection.event_manager"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="_int4">string</argument>
+      </argument>
       <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
     </service>
     <service id="Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider" class="Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider">
@@ -5021,7 +5060,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.aDzhvaI"/>
+      <argument type="service" id=".service_locator.cLihomq"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -7118,6 +7157,15 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CatBasesController" class="App\Controller\CatBasesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CatBasesController" class="App\Controller\CatBasesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CatBasesController" class="App\Controller\CatBasesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CatEntityController" class="App\Controller\CatEntityController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CatEntityController" class="App\Controller\CatEntityController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CatEntityController" class="App\Controller\CatEntityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CatEntityFieldsController" class="App\Controller\CatEntityFieldsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CatEntityFieldsController" class="App\Controller\CatEntityFieldsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CatEntityFieldsController" class="App\Controller\CatEntityFieldsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CatEntityRelsController" class="App\Controller\CatEntityRelsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CatEntityRelsController" class="App\Controller\CatEntityRelsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CatEntityRelsController" class="App\Controller\CatEntityRelsController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CatFieldsController" class="App\Controller\CatFieldsController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CatFieldsController" class="App\Controller\CatFieldsController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CatFieldsController" class="App\Controller\CatFieldsController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7177,6 +7225,12 @@
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CatBasesType" class="App\Form\CatBasesType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CatBasesType" class="App\Form\CatBasesType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CatEntityFieldsType" class="App\Form\CatEntityFieldsType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CatEntityFieldsType" class="App\Form\CatEntityFieldsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CatEntityRelsType" class="App\Form\CatEntityRelsType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CatEntityRelsType" class="App\Form\CatEntityRelsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CatEntityType" class="App\Form\CatEntityType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CatEntityType" class="App\Form\CatEntityType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CatFieldsType" class="App\Form\CatFieldsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CatFieldsType" class="App\Form\CatFieldsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CatRelsType" class="App\Form\CatRelsType" autowire="true" abstract="true"/>
@@ -7207,6 +7261,12 @@
     <service id=".abstract.instanceof.App\Form\TestType" class="App\Form\TestType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CatBasesRepository" class="App\Repository\CatBasesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CatBasesRepository" class="App\Repository\CatBasesRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CatEntityFieldsRepository" class="App\Repository\CatEntityFieldsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CatEntityFieldsRepository" class="App\Repository\CatEntityFieldsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CatEntityRelsRepository" class="App\Repository\CatEntityRelsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CatEntityRelsRepository" class="App\Repository\CatEntityRelsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CatEntityRepository" class="App\Repository\CatEntityRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CatEntityRepository" class="App\Repository\CatEntityRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CatFieldsRepository" class="App\Repository\CatFieldsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CatFieldsRepository" class="App\Repository\CatFieldsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CatRelsRepository" class="App\Repository\CatRelsRepository" autowire="true" abstract="true"/>
@@ -7630,6 +7690,27 @@
         <argument key="item" type="service_closure" id=".errored..service_locator.oRIUocl.App\Entity\CatBases"/>
       </argument>
     </service>
+    <service id=".service_locator.lOoTOBt" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="item" type="service_closure" id=".errored..service_locator.lOoTOBt.App\Entity\CatEntity"/>
+      </argument>
+    </service>
+    <service id=".service_locator.9ZqfeX_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="item" type="service_closure" id=".errored..service_locator.9ZqfeX_.App\Entity\CatEntityFields"/>
+      </argument>
+    </service>
+    <service id=".service_locator.8daNUFD" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="item" type="service_closure" id=".errored..service_locator.8daNUFD.App\Entity\CatEntityRels"/>
+      </argument>
+    </service>
     <service id=".service_locator.UDO16ki" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7867,7 +7948,7 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.uRl3ewN.App\Entity\SecUser"/>
       </argument>
     </service>
-    <service id=".service_locator.5m2qX.T" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.0tcEkgn" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CatBasesController::delete" type="service_closure" id=".service_locator.oRIUocl"/>
@@ -7875,13 +7956,27 @@
         <argument key="App\Controller\CatBasesController::index" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\CatBasesController::list" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\CatBasesController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CatEntityController::delete" type="service_closure" id=".service_locator.lOoTOBt"/>
+        <argument key="App\Controller\CatEntityController::edit" type="service_closure" id=".service_locator.lOoTOBt"/>
+        <argument key="App\Controller\CatEntityController::index" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityController::list" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CatEntityFieldsController::delete" type="service_closure" id=".service_locator.9ZqfeX_"/>
+        <argument key="App\Controller\CatEntityFieldsController::edit" type="service_closure" id=".service_locator.9ZqfeX_"/>
+        <argument key="App\Controller\CatEntityFieldsController::index" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityFieldsController::list" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityFieldsController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CatEntityRelsController::delete" type="service_closure" id=".service_locator.8daNUFD"/>
+        <argument key="App\Controller\CatEntityRelsController::edit" type="service_closure" id=".service_locator.8daNUFD"/>
+        <argument key="App\Controller\CatEntityRelsController::index" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityRelsController::list" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityRelsController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\CatFieldsController::delete" type="service_closure" id=".service_locator._A8A.3V"/>
         <argument key="App\Controller\CatFieldsController::edit" type="service_closure" id=".service_locator._A8A.3V"/>
         <argument key="App\Controller\CatFieldsController::getInfoTable" type="service_closure" id=".service_locator.9xWSXzM"/>
         <argument key="App\Controller\CatFieldsController::index" type="service_closure" id=".service_locator.UDO16ki"/>
         <argument key="App\Controller\CatFieldsController::list" type="service_closure" id=".service_locator.UDO16ki"/>
         <argument key="App\Controller\CatFieldsController::new" type="service_closure" id=".service_locator.KLtqXK2"/>
-        <argument key="App\Controller\CatFieldsController::relupdate" type="service_closure" id=".service_locator.6M.NQpB"/>
         <argument key="App\Controller\CatFieldsController::update" type="service_closure" id=".service_locator.6M.NQpB"/>
         <argument key="App\Controller\CatRelsController::delete" type="service_closure" id=".service_locator.gSBHE_A"/>
         <argument key="App\Controller\CatRelsController::edit" type="service_closure" id=".service_locator.gSBHE_A"/>
@@ -7981,13 +8076,27 @@
         <argument key="App\Controller\CatBasesController:index" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\CatBasesController:list" type="service_closure" id=".service_locator.o6sN0hZ"/>
         <argument key="App\Controller\CatBasesController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CatEntityController:delete" type="service_closure" id=".service_locator.lOoTOBt"/>
+        <argument key="App\Controller\CatEntityController:edit" type="service_closure" id=".service_locator.lOoTOBt"/>
+        <argument key="App\Controller\CatEntityController:index" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityController:list" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CatEntityFieldsController:delete" type="service_closure" id=".service_locator.9ZqfeX_"/>
+        <argument key="App\Controller\CatEntityFieldsController:edit" type="service_closure" id=".service_locator.9ZqfeX_"/>
+        <argument key="App\Controller\CatEntityFieldsController:index" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityFieldsController:list" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityFieldsController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CatEntityRelsController:delete" type="service_closure" id=".service_locator.8daNUFD"/>
+        <argument key="App\Controller\CatEntityRelsController:edit" type="service_closure" id=".service_locator.8daNUFD"/>
+        <argument key="App\Controller\CatEntityRelsController:index" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityRelsController:list" type="service_closure" id=".service_locator.o6sN0hZ"/>
+        <argument key="App\Controller\CatEntityRelsController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\CatFieldsController:delete" type="service_closure" id=".service_locator._A8A.3V"/>
         <argument key="App\Controller\CatFieldsController:edit" type="service_closure" id=".service_locator._A8A.3V"/>
         <argument key="App\Controller\CatFieldsController:getInfoTable" type="service_closure" id=".service_locator.9xWSXzM"/>
         <argument key="App\Controller\CatFieldsController:index" type="service_closure" id=".service_locator.UDO16ki"/>
         <argument key="App\Controller\CatFieldsController:list" type="service_closure" id=".service_locator.UDO16ki"/>
         <argument key="App\Controller\CatFieldsController:new" type="service_closure" id=".service_locator.KLtqXK2"/>
-        <argument key="App\Controller\CatFieldsController:relupdate" type="service_closure" id=".service_locator.6M.NQpB"/>
         <argument key="App\Controller\CatFieldsController:update" type="service_closure" id=".service_locator.6M.NQpB"/>
         <argument key="App\Controller\CatRelsController:delete" type="service_closure" id=".service_locator.gSBHE_A"/>
         <argument key="App\Controller\CatRelsController:edit" type="service_closure" id=".service_locator.gSBHE_A"/>
@@ -8239,10 +8348,13 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.RoyBYT1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.iWkBTkU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CatBasesType" type="service_closure" id="App\Form\CatBasesType"/>
+        <argument key="App\Form\CatEntityFieldsType" type="service_closure" id="App\Form\CatEntityFieldsType"/>
+        <argument key="App\Form\CatEntityRelsType" type="service_closure" id="App\Form\CatEntityRelsType"/>
+        <argument key="App\Form\CatEntityType" type="service_closure" id="App\Form\CatEntityType"/>
         <argument key="App\Form\CatFieldsType" type="service_closure" id="App\Form\CatFieldsType"/>
         <argument key="App\Form\CatRelsType" type="service_closure" id="App\Form\CatRelsType"/>
         <argument key="App\Form\CatTableType" type="service_closure" id="App\Form\CatTableType"/>
@@ -8360,10 +8472,13 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_listener" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.aDzhvaI" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.cLihomq" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CatBasesRepository" type="service_closure" id="App\Repository\CatBasesRepository"/>
+        <argument key="App\Repository\CatEntityFieldsRepository" type="service_closure" id="App\Repository\CatEntityFieldsRepository"/>
+        <argument key="App\Repository\CatEntityRelsRepository" type="service_closure" id="App\Repository\CatEntityRelsRepository"/>
+        <argument key="App\Repository\CatEntityRepository" type="service_closure" id="App\Repository\CatEntityRepository"/>
         <argument key="App\Repository\CatFieldsRepository" type="service_closure" id="App\Repository\CatFieldsRepository"/>
         <argument key="App\Repository\CatRelsRepository" type="service_closure" id="App\Repository\CatRelsRepository"/>
         <argument key="App\Repository\CatTableRepository" type="service_closure" id="App\Repository\CatTableRepository"/>
@@ -8816,6 +8931,24 @@
     <service id=".service_locator.O2p6Lk7.App\Controller\CatBasesController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\CatBasesController"/>
       <argument>App\Controller\CatBasesController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\CatEntityController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CatEntityController"/>
+      <argument>App\Controller\CatEntityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\CatEntityFieldsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CatEntityFieldsController"/>
+      <argument>App\Controller\CatEntityFieldsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\CatEntityRelsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CatEntityRelsController"/>
+      <argument>App\Controller\CatEntityRelsController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -9295,6 +9428,15 @@
     </service>
     <service id=".errored..service_locator.oRIUocl.App\Entity\CatBases" class="App\Entity\CatBases">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.oRIUocl&quot;: it needs an instance of &quot;App\Entity\CatBases&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.lOoTOBt.App\Entity\CatEntity" class="App\Entity\CatEntity">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.lOoTOBt&quot;: it needs an instance of &quot;App\Entity\CatEntity&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.9ZqfeX_.App\Entity\CatEntityFields" class="App\Entity\CatEntityFields">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.9ZqfeX_&quot;: it needs an instance of &quot;App\Entity\CatEntityFields&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.8daNUFD.App\Entity\CatEntityRels" class="App\Entity\CatEntityRels">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.8daNUFD&quot;: it needs an instance of &quot;App\Entity\CatEntityRels&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.UDO16ki.App\Entity\CatTable" class="App\Entity\CatTable">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.UDO16ki&quot;: it needs an instance of &quot;App\Entity\CatTable&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -10371,7 +10513,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.5m2qX.T"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.0tcEkgn"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -10393,6 +10535,9 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.DAR4L21" alias=".service_locator.oRIUocl"/>
+    <service id=".service_locator.e4DIIIp" alias=".service_locator.lOoTOBt"/>
+    <service id=".service_locator.b8Itaew" alias=".service_locator.9ZqfeX_"/>
+    <service id=".service_locator.yBwc0Oi" alias=".service_locator.8daNUFD"/>
     <service id=".service_locator.ddVZJT1" alias=".service_locator.UDO16ki"/>
     <service id=".service_locator.VoSuD_H" alias=".service_locator.KLtqXK2"/>
     <service id=".service_locator.puKqnUe" alias=".service_locator._A8A.3V"/>
@@ -10418,9 +10563,9 @@
     <service id=".service_locator.oS_yMWX" alias=".service_locator.sMLbUQ."/>
     <service id=".service_locator.uyG9f23" alias=".service_locator.yz9bQEH"/>
     <service id=".service_locator.nVYEHCi" alias=".service_locator.uRl3ewN"/>
-    <service id=".service_locator.1KKaGGc" alias=".service_locator.5m2qX.T"/>
+    <service id=".service_locator.q3mNdL3" alias=".service_locator.0tcEkgn"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.wZ.9_vY" alias=".service_locator.RoyBYT1"/>
+    <service id=".service_locator.OlARaZb" alias=".service_locator.iWkBTkU"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
@@ -10446,6 +10591,9 @@
     <service id=".service_locator.eQ296SW" alias=".service_locator.o6sN0hZ"/>
     <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
     <service id=".service_locator.HJQi1dj" alias=".service_locator.oRIUocl"/>
+    <service id=".service_locator.tx4UCmd" alias=".service_locator.lOoTOBt"/>
+    <service id=".service_locator.6RjApoQ" alias=".service_locator.9ZqfeX_"/>
+    <service id=".service_locator.jatJxo1" alias=".service_locator.8daNUFD"/>
     <service id=".service_locator.8FfSiXO" alias=".service_locator.UDO16ki"/>
     <service id=".service_locator.jrNUwjI" alias=".service_locator.KLtqXK2"/>
     <service id=".service_locator.ZQP5enc" alias=".service_locator._A8A.3V"/>

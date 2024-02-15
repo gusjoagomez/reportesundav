@@ -4,7 +4,7 @@
 {% block title %}{{ 'Listado de Bases' | trans }}{% endblock %}
 
 {% block body %}
-<h1>{{ 'Lista de Bases' | trans }}</h1>
+<h1>{{ 'Lista de Bases - catálogo' | trans }}</h1>
 
 {% for message in app.session.getFlashBag.get('message') %}
     <br><div class="alert alert-success" role="alert">{{message| trans}}</div>

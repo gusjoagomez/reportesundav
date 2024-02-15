@@ -85,11 +85,16 @@ class __TwigTemplate_eec2edb48416b972ae2079c017f57101 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "<h2>";
+        echo "<a class=\"btn btn-secondary\" role=\"button\" aria-disabled=\"true\" href=\"";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("cattable_index", ["id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["table"]) || array_key_exists("table", $context) ? $context["table"] : (function () { throw new RuntimeError('Variable "table" does not exist.', 7, $this->source); })()), "getBase", [], "any", false, false, false, 7), "id", [], "any", false, false, false, 7)]), "html", null, true);
+        echo "\">";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Volver"), "html", null, true);
+        echo "</a>
+
+<h2>";
+        // line 9
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Lista de Campos"), "html", null, true);
         echo "</h2>
-
-
 
 
 ";
@@ -135,66 +140,41 @@ class __TwigTemplate_eec2edb48416b972ae2079c017f57101 extends Template
         echo "\">";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Actualizar catalogo de campos"), "html", null, true);
         echo "</a>
-<a class=\"btn btn-primary\" role=\"button\" aria-disabled=\"true\" href=\"";
-        // line 21
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("catfields_relupdate", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["table"]) || array_key_exists("table", $context) ? $context["table"] : (function () { throw new RuntimeError('Variable "table" does not exist.', 21, $this->source); })()), "id", [], "any", false, false, false, 21)]), "html", null, true);
-        echo "\">";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Actualizar relaciones"), "html", null, true);
-        echo "</a>
 
 <table id=\"tblist\" class=\"table table-sm table-striped table-bordered table-hover\">
 <thead>
 <tr>
+<th data-field=\"orderlist\">#</th>
  <th data-field=\"fieldname\">";
         // line 26
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Fieldname"), "html", null, true);
-        echo "</th>
- <th data-field=\"esnull\">";
-        // line 27
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Esnull"), "html", null, true);
-        echo "</th>
- <th data-field=\"ftable\">";
-        // line 28
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Ftable"), "html", null, true);
-        echo "</th>
- <th data-field=\"fkey\">";
-        // line 29
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Fkey"), "html", null, true);
-        echo "</th>
- <th data-field=\"labelhelp\">";
-        // line 30
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Labelhelp"), "html", null, true);
-        echo "</th>
- <th data-field=\"orderlist\">";
-        // line 31
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Orderlist"), "html", null, true);
-        echo "</th>
- <th data-field=\"inlist\">";
-        // line 32
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Inlist"), "html", null, true);
-        echo "</th>
- <th data-field=\"tablename\">";
-        // line 33
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Tablename"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Campo"), "html", null, true);
         echo "</th>
  <th data-field=\"pk\">";
-        // line 34
+        // line 27
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Pk"), "html", null, true);
         echo "</th>
- <th data-field=\"incrud\">";
-        // line 35
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Incrud"), "html", null, true);
-        echo "</th>
- <th data-field=\"typename\">";
-        // line 36
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Typename"), "html", null, true);
+ <th data-field=\"esnull\">";
+        // line 28
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Nulo"), "html", null, true);
         echo "</th>
  <th data-field=\"label\">";
-        // line 37
+        // line 29
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Label"), "html", null, true);
         echo "</th>
+ <th data-field=\"typename\">";
+        // line 30
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Tipo"), "html", null, true);
+        echo "</th>
+ <th data-field=\"ftable\">";
+        // line 31
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("FK.table"), "html", null, true);
+        echo "</th>
+ <th data-field=\"fkey\">";
+        // line 32
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("FK.rel"), "html", null, true);
+        echo "</th>
  <th data-field=\"opcionCatFields\">";
-        // line 38
+        // line 33
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Opcion"), "html", null, true);
         echo "</th>
 </tr>
@@ -204,29 +184,26 @@ class __TwigTemplate_eec2edb48416b972ae2079c017f57101 extends Template
 <script>
 \$(document).ready(function() {
   \$('#tblist').DataTable({
+    \"pageLength\": 50, \"lengthChange\": false,
     \"stateSave\":true,\"processing\":true,
     \"language\":{\"url\":\"";
-        // line 47
+        // line 43
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("/assets/datatables/Spanish.json"), "html", null, true);
         echo "\"},
     \"ajax\":\"";
-        // line 48
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("catfields_list", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["table"]) || array_key_exists("table", $context) ? $context["table"] : (function () { throw new RuntimeError('Variable "table" does not exist.', 48, $this->source); })()), "id", [], "any", false, false, false, 48)]), "html", null, true);
+        // line 44
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("catfields_list", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["table"]) || array_key_exists("table", $context) ? $context["table"] : (function () { throw new RuntimeError('Variable "table" does not exist.', 44, $this->source); })()), "id", [], "any", false, false, false, 44)]), "html", null, true);
         echo "\",
     \"order\": [[ 0, \"desc\" ]],
     \"columns\":[
+      {\"data\":\"orderlist\"},
       {\"data\":\"fieldname\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {\$(nTd).html(\"<a href='/catfields/\"+oData.id+\"/edit'>\"+oData.fieldname+\"</a>\");}}},
-      {\"data\":\"esnull\"},
+      {\"data\":\"pk\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.pk==1) {\$(nTd).html(\"Si\");}}},
+      {\"data\":\"esnull\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.esnull==1) {\$(nTd).html(\"Si\");}else{\$(nTd).html(\"No\");}}},
+      {\"data\":\"label\"},
+      {\"data\":\"typename\"},
       {\"data\":\"ftable\"},
       {\"data\":\"fkey\"},
-      {\"data\":\"labelhelp\"},
-      {\"data\":\"orderlist\"},
-      {\"data\":\"inlist\"},
-      {\"data\":\"tablename\"},
-      {\"data\":\"pk\"},
-      {\"data\":\"incrud\"},
-      {\"data\":\"typename\"},
-      {\"data\":\"label\"},
       {\"data\":\"id\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {\$(nTd).html(\"<a href='/catfields/\"+oData.id+\"/delete'><i class='bi bi-trash'></i></a>\");}}},
     ]
    });   
@@ -254,7 +231,7 @@ class __TwigTemplate_eec2edb48416b972ae2079c017f57101 extends Template
 
     public function getDebugInfo()
     {
-        return array (  214 => 48,  210 => 47,  198 => 38,  194 => 37,  190 => 36,  186 => 35,  182 => 34,  178 => 33,  174 => 32,  170 => 31,  166 => 30,  162 => 29,  158 => 28,  154 => 27,  150 => 26,  140 => 21,  134 => 20,  126 => 19,  123 => 18,  114 => 16,  110 => 15,  101 => 13,  97 => 12,  88 => 7,  78 => 6,  59 => 4,  36 => 1,);
+        return array (  195 => 44,  191 => 43,  178 => 33,  174 => 32,  170 => 31,  166 => 30,  162 => 29,  158 => 28,  154 => 27,  150 => 26,  139 => 20,  131 => 19,  128 => 18,  119 => 16,  115 => 15,  106 => 13,  102 => 12,  96 => 9,  88 => 7,  78 => 6,  59 => 4,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -265,9 +242,9 @@ class __TwigTemplate_eec2edb48416b972ae2079c017f57101 extends Template
 {% block title %}{{ 'Listado de Campos' | trans }}{% endblock %}
 
 {% block body %}
+<a class=\"btn btn-secondary\" role=\"button\" aria-disabled=\"true\" href=\"{{url('cattable_index', {'id':table.getBase.id})}}\">{{ 'Volver' | trans}}</a>
+
 <h2>{{ 'Lista de Campos' | trans }}</h2>
-
-
 
 
 {% for message in app.session.getFlashBag.get('message') %}
@@ -279,23 +256,18 @@ class __TwigTemplate_eec2edb48416b972ae2079c017f57101 extends Template
 
 <h2>{{ 'Tabla' | trans }}: {{table.schemaname}}.{{table.tablename}}</h2>
 <a class=\"btn btn-primary\" role=\"button\" aria-disabled=\"true\" href=\"{{url('catfields_update', {'id':table.id})}}\">{{ 'Actualizar catalogo de campos' | trans }}</a>
-<a class=\"btn btn-primary\" role=\"button\" aria-disabled=\"true\" href=\"{{url('catfields_relupdate', {'id':table.id})}}\">{{ 'Actualizar relaciones' | trans }}</a>
 
 <table id=\"tblist\" class=\"table table-sm table-striped table-bordered table-hover\">
 <thead>
 <tr>
- <th data-field=\"fieldname\">{{ 'Fieldname' | trans}}</th>
- <th data-field=\"esnull\">{{ 'Esnull' | trans}}</th>
- <th data-field=\"ftable\">{{ 'Ftable' | trans}}</th>
- <th data-field=\"fkey\">{{ 'Fkey' | trans}}</th>
- <th data-field=\"labelhelp\">{{ 'Labelhelp' | trans}}</th>
- <th data-field=\"orderlist\">{{ 'Orderlist' | trans}}</th>
- <th data-field=\"inlist\">{{ 'Inlist' | trans}}</th>
- <th data-field=\"tablename\">{{ 'Tablename' | trans}}</th>
+<th data-field=\"orderlist\">#</th>
+ <th data-field=\"fieldname\">{{ 'Campo' | trans}}</th>
  <th data-field=\"pk\">{{ 'Pk' | trans}}</th>
- <th data-field=\"incrud\">{{ 'Incrud' | trans}}</th>
- <th data-field=\"typename\">{{ 'Typename' | trans}}</th>
+ <th data-field=\"esnull\">{{ 'Nulo' | trans}}</th>
  <th data-field=\"label\">{{ 'Label' | trans}}</th>
+ <th data-field=\"typename\">{{ 'Tipo' | trans}}</th>
+ <th data-field=\"ftable\">{{ 'FK.table' | trans}}</th>
+ <th data-field=\"fkey\">{{ 'FK.rel' | trans}}</th>
  <th data-field=\"opcionCatFields\">{{'Opcion' | trans}}</th>
 </tr>
 </thead>
@@ -304,23 +276,20 @@ class __TwigTemplate_eec2edb48416b972ae2079c017f57101 extends Template
 <script>
 \$(document).ready(function() {
   \$('#tblist').DataTable({
+    \"pageLength\": 50, \"lengthChange\": false,
     \"stateSave\":true,\"processing\":true,
     \"language\":{\"url\":\"{{asset('/assets/datatables/Spanish.json')}}\"},
     \"ajax\":\"{{url('catfields_list',{'id':table.id})}}\",
     \"order\": [[ 0, \"desc\" ]],
     \"columns\":[
+      {\"data\":\"orderlist\"},
       {\"data\":\"fieldname\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {\$(nTd).html(\"<a href='/catfields/\"+oData.id+\"/edit'>\"+oData.fieldname+\"</a>\");}}},
-      {\"data\":\"esnull\"},
+      {\"data\":\"pk\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.pk==1) {\$(nTd).html(\"Si\");}}},
+      {\"data\":\"esnull\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.esnull==1) {\$(nTd).html(\"Si\");}else{\$(nTd).html(\"No\");}}},
+      {\"data\":\"label\"},
+      {\"data\":\"typename\"},
       {\"data\":\"ftable\"},
       {\"data\":\"fkey\"},
-      {\"data\":\"labelhelp\"},
-      {\"data\":\"orderlist\"},
-      {\"data\":\"inlist\"},
-      {\"data\":\"tablename\"},
-      {\"data\":\"pk\"},
-      {\"data\":\"incrud\"},
-      {\"data\":\"typename\"},
-      {\"data\":\"label\"},
       {\"data\":\"id\",fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {if(oData.id) {\$(nTd).html(\"<a href='/catfields/\"+oData.id+\"/delete'><i class='bi bi-trash'></i></a>\");}}},
     ]
    });   

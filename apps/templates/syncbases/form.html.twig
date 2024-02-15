@@ -35,8 +35,10 @@
                 {{ form_row(form.tpasswd) }}
             </div>
             {{ form_row(form.active) }}
+            {{ form_row(form.posdump) }}
         </div>
         {{ form_row(form.btnsubmit) }}
+        *NOTA*: posdump son comandos que se ejecutan luego de generar el archivo de dump da la base de datos origen. En general se utiliza para corregir datos del archivo de script generado.
     </div>
 
 {{ form_end(form) }}

@@ -531,13 +531,14 @@ class Utilgenerator {
 
         $orderlist=0;
 
+        $pk = Utilgenerator::getPKTable($conn,  $schema, $table, 'PRIMARY'); //retrieve PK
+
         //$sql = "SELECT ORDINAL_POSITION orden, COLUMN_NAME field, IS_NULLABLE 'null', DATA_TYPE data_type,CHARACTER_MAXIMUM_LENGTH character_maximum_length,NUMERIC_PRECISION numeric_precision,COLUMN_TYPE type,NUMERIC_PRECISION numeric_scale,EXTRA column_default FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '{$schema}' AND TABLE_NAME = '{$table}'";
 		$sql = "SELECT c.ordinal_position as orden, c.column_name as field, c.is_nullable as null, c.data_type, c.character_maximum_length, c.numeric_precision, c.udt_name as type, c.numeric_scale, c.column_default FROM information_schema.columns c WHERE c.table_schema='{$schema}' AND c.table_name ='{$table}'";
         $stmt = $conn->prepare($sql);
         $resultSet = $stmt->executeQuery();
         while (($ele = $resultSet->fetchAssociative()) !== false) 
-        {
-            $pk = Utilgenerator::getPKTable($conn,  $schema, $table, 'PRIMARY');
+        {        
             if(!in_array($ele['field'],$excluded))
             {
                 $type = $ele['data_type'];
@@ -550,9 +551,8 @@ class Utilgenerator {
                 $column = ucfirst(str_replace('_', ' ', $ele['field']));  //--- column name
 
                 $espk = (isset($pk[$ele['field']]))?1:'';
-
-                $ret[$ele['field']] = array('column'=>$column,'name'=>$ele['field'],'type'=>$type, 'length'=>$length, 'null'=>$null, 'pri'=>$espk, 'orderlist'=>$orderlist);
                 $orderlist++;
+                $ret[$ele['field']] = array('column'=>$column,'name'=>$ele['field'],'type'=>$type, 'length'=>$length, 'null'=>$null, 'pri'=>$espk, 'orderlist'=>$orderlist);
             }
         }
     
